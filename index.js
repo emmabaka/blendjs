@@ -72,3 +72,140 @@
 //    }, 0)
 // };
 // console.log(calcTotalPrice(stones, "sapphire"));
+
+//4. Створіть об'єкт calculator з трьома методами
+//read(a, b) - приймає два аргумента та зберігає їх як властивості об'єкта під ключами prop1 та prop2
+//sum() перевіряє чи присутні  властивості prop1/prop2 та повертає їх суму, в противному випадку повертає null
+//mult() перевіряє чи присутні  властивості prop1/prop2 та повертає їх добуток, в противному випадку повертає null
+// Не забудьте, що математичні оператори працюють коректно тільки з числовими значеннями
+
+// const calculator = {
+//   read(a, b) {
+//     this.prop1 = a;
+//     this.prop2 = b;
+//   },
+
+//   sum() {
+//     if( Number(this.prop1)  && Number(this.prop2)) {
+//         return  Number(this.prop1) + Number(this.prop2)
+//     } else {
+//         return null;
+//     }
+
+//   },
+//   mult() {
+//     if( Number(this.prop1)  && Number(this.prop2)) {
+//         return Number(this.prop1) * Number(this.prop2)
+//     } else {
+//         return null;
+//     }
+
+//   },
+// };
+// calculator.read(2, "5");
+
+// console.log(calculator.sum());
+
+// console.log(calculator.mult());
+
+// task5
+
+//5. Напишіть функцію updateObject, яка приймає об'єкт та ключ
+//і повертає новий об'єкт без вказаної властивості
+//Очікуваний результат ({ a: 1, b: 2, c: 3 }, 'b') => {a: 1, c: 3}
+
+// function updateObject(object, key) {
+// const newObject = {...object}
+//      delete newObject[key];
+//      return newObject;
+// };
+
+// variant2
+// function updateObject(object, nameKey) {
+//    const keys = Object.keys(object);
+//    const newObject = {};
+//    for(const key of keys) {
+//     if (key !== nameKey) {
+//         newObject[key] = object[key];
+//     }
+//     }
+//     return newObject
+//      };
+
+
+// console.log(updateObject({ a: 1, b: 2, c: 3 }, 'b'));
+
+// // {a: 'a', c: 'c'}
+
+
+
+//6. Напишіть функцію updateObject, яка приймає об'єкт та перелік ключів
+//і повертає новий об'єкт без вказаних властивостей
+//Очікуваний результат ({ a: 1, b: 2, c: 3 }, 'b', 'c') => {a: 1}
+
+
+// / 7. Напишіть функцію changeObject, яка приймає як параметр об'єкт
+// та повертає масив, в якому кожен елемент це масив, який складається з двох елементів [key, value]
+// Очікуваний результат console.log(changeObject({ a: 1, b: 2, c: 3 })) // [["a", 1], ["b", 2], ["c", 3]]
+// const user = {
+  //   name: 'John',
+  //   surName: 'Stones',
+  //   age: 20,
+  //   hobby: 'tenis',
+  //   haveCar: true,
+  //   merried: false,
+  // }
+
+// 8. Напиши скрипт керування особистим кабінетом інтернет банку.
+//Є об'єкт account, в якому необхідно реалізувати методи для роботи з балансом та історією трансакцій
+//Типів трансакцій усього два. Можна поповнити рахунок або списати з нього гроші.
+//
+// const TYPES_TRANSACTION = {
+//   DEPOSIT: 'deposit',
+//   WITHDRAW: 'withdraw',
+// }
+//Кожна трансакція має мати властивості: id, type, amount.
+
+// {
+//     const account = {
+//       //поточний баланс рахунку
+//       balance: 0,
+  
+//       //Історія трансакцій
+//       transactions: [],
+  
+// //Метод приймає суму та тип трансакції і створює та додає у transactions об'єкт трансакції за зразком {id, type, amount}
+// createTransaction(type, amount) {
+//     return {
+//       id,
+//       type,
+//       amount,
+//     }
+//   },
+
+  //Метод відповідає за додавання суми до балансу.
+  //Приймає суму трансакції.
+  //Викликає createTransaction для створення об'єкта трансакції після чого додає його в історію трансакцій
+//   deposit(amount) {},
+
+  //Метод відповідає за списання коштів з балансу.
+  //Приймає суму трансакції, викликає createTransaction для створення об'єкту трансакції
+  //післе чого додає його в історію трансакцій
+  //Якщо amount більше ніж поточний баланс, виводимо повідомлення про те, що недостатньо коштів на рахунку
+//   withdraw(amount) {},
+
+  //Метод повертає поточний баланс
+//   getBalance() {},
+
+//   //Метод шукає та повертає об'єкт трансакції по id
+//   getTransactionDetails(id) {},
+
+//   //Метод повертає загальну суму трансакції певного типу із всієї історії трансакцій
+//   getTotalSumByType(type) {},
+// }
+// }
+
+
+
+
+
