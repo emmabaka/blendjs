@@ -209,3 +209,20 @@
 // const button = document.querySelector("#alertButton");
 
 // button.addEventListener("click", () => console.log(input.value));
+
+// Задача 2
+// По нажатию на кнопку "SWAP ME" осуществляется обмен содержимым между двумя инпутами.
+// можете понажимать на нее несколько раз или вручную сменить содержимое инпутов.
+// */
+
+// const swapBtn = document.querySelector("#swapButton");
+// const leftInput = document.querySelector("#leftSwapInput");
+// const rightInput = document.querySelector("#rightSwapInput");
+
+// swapBtn.addEventListener("click", swapBtnHandler);
+
+// function swapBtnHandler() {
+//   const acc = leftInput.value;
+//   leftInput.value = rightInput.value;
+//   rightInput.value = acc;
+// }
