@@ -253,26 +253,81 @@
 // Задача 4
 // Кнопка "Уменьшить" делает квадрат меньше на 10 пикселей, кпопка "Увеличить" - больше на 10 пикселей.
 
-{/* <div>
+{
+  /* <div>
     <p class="taskTitle">ЗАДАЧА 4</p>
     <div id="box"></div>
     <button id="decrease">Уменьшить</button>
     <button id="increase">Увеличить</button>
-</div> */}
+</div> */
+}
 
-const buttonDecrease = document.querySelector("#decrease");
-const buttonIncrease = document.querySelector("#increase");
-const box = document.querySelector("#box");
-box.style.backgroundColor = "#000";
+// const buttonDecrease = document.querySelector("#decrease");
+// const buttonIncrease = document.querySelector("#increase");
+// const box = document.querySelector("#box");
+// box.style.backgroundColor = "#000";
 
-buttonDecrease.addEventListener("click", () => {
-  box.style.width = `${box.offsetWidth - 10}px`;
-  box.style.height = `${box.offsetWidth - 10}px`;
-  
-});
+// buttonDecrease.addEventListener("click", () => {
+//   box.style.width = `${box.offsetWidth - 10}px`;
+//   box.style.height = `${box.offsetWidth - 10}px`;
 
-buttonIncrease.addEventListener("click", () => {
-  box.style.width = `${box.offsetWidth + 10}px`;
-  box.style.height = `${box.offsetWidth + 10}px`;
-  
-})
+// });
+
+// buttonIncrease.addEventListener("click", () => {
+//   box.style.width = `${box.offsetWidth + 10}px`;
+//   box.style.height = `${box.offsetWidth + 10}px`;
+
+// });
+
+// Задача 8
+// При клике на каждую из кнопок суммируются значения с data-атрибутов.
+// По нажатию на кнопку "Вывести результат" выводится сумма значения, а также статистика с
+// информацией о том, какая кнопка была нажата сколько раз.
+
+// const box = document.querySelector(".statList");
+// const resultButton = document.querySelector("#resultButton");
+
+// let sum = 0;
+
+// box.addEventListener("click", onButtonClick);
+// resultButton.addEventListener("click", () => console.log(sum, obj));
+
+// function onButtonClick(e) {
+//   sum += Number(e.target.dataset.number);
+
+//   if (obj.hasOwnProperty(e.target.textContent)) {
+//     obj[e.target.textContent] += 1;
+//   } else {
+//     obj[e.target.textContent] = 1;
+//   }
+// }
+
+// const obj = {};
+
+/*
+Задача 9
+Удали из списка те элементы, которые отмечены.
+*/
+
+/*
+Задача 10
+Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
+*/
+
+/*
+Задача 11
+Дан список людей. Сделай фильтр по имени/фамилии.
+*/
+
+/*
+Задача 12
+Клик по кнопке заменяет символ с первого поля ввода 
+на символ со второго поля ввода во всем тексте.
+Если одно из полей пустое, вызывай alert с просьбой заполнить их.
+*/
+
+/*
+Задача 13
+Круг должен изчезать при наведении на него.
+При этом позиция соседних кругов должна оставаться прежней.
+*/
