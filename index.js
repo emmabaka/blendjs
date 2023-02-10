@@ -250,3 +250,29 @@
 //     ? ((inputEl.type = "password"), (buttonEl.textContent = "Раскрыть"))
 //     : ((inputEl.type = "text"), (buttonEl.textContent = "Скрыть"));
 // });
+// Задача 4
+// Кнопка "Уменьшить" делает квадрат меньше на 10 пикселей, кпопка "Увеличить" - больше на 10 пикселей.
+
+{/* <div>
+    <p class="taskTitle">ЗАДАЧА 4</p>
+    <div id="box"></div>
+    <button id="decrease">Уменьшить</button>
+    <button id="increase">Увеличить</button>
+</div> */}
+
+const buttonDecrease = document.querySelector("#decrease");
+const buttonIncrease = document.querySelector("#increase");
+const box = document.querySelector("#box");
+box.style.backgroundColor = "#000";
+
+buttonDecrease.addEventListener("click", () => {
+  box.style.width = `${box.offsetWidth - 10}px`;
+  box.style.height = `${box.offsetWidth - 10}px`;
+  
+});
+
+buttonIncrease.addEventListener("click", () => {
+  box.style.width = `${box.offsetWidth + 10}px`;
+  box.style.height = `${box.offsetWidth + 10}px`;
+  
+})
