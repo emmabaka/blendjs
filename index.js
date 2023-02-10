@@ -226,3 +226,27 @@
 //   leftInput.value = rightInput.value;
 //   rightInput.value = acc;
 // }
+
+/*
+Задача 3
+Кнопка "Скрыть" прячет текст и заменяет название кнопки на
+"Раскрыть", при повторном нажатии текст снова становится доступен
+и кнопка принимает начальный вид.
+*/
+
+// const inputEl = document.querySelector("#passwordInput");
+// const buttonEl = document.querySelector("#passwordButton");
+
+// buttonEl.addEventListener("click", () => {
+//   //   if (inputEl.type !== "password") {
+//   //     inputEl.type = "password";
+//   //     buttonEl.textContent = "Раскрыть";
+//   //   } else {
+//   //     inputEl.type = "text";
+//   //     buttonEl.textContent = "Скрыть";
+//   //     }
+
+//   inputEl.type !== "password"
+//     ? ((inputEl.type = "password"), (buttonEl.textContent = "Раскрыть"))
+//     : ((inputEl.type = "text"), (buttonEl.textContent = "Скрыть"));
+// });
