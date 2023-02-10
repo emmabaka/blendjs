@@ -253,26 +253,52 @@
 // Задача 4
 // Кнопка "Уменьшить" делает квадрат меньше на 10 пикселей, кпопка "Увеличить" - больше на 10 пикселей.
 
-{/* <div>
+{
+  /* <div>
     <p class="taskTitle">ЗАДАЧА 4</p>
     <div id="box"></div>
     <button id="decrease">Уменьшить</button>
     <button id="increase">Увеличить</button>
-</div> */}
+</div> */
+}
 
-const buttonDecrease = document.querySelector("#decrease");
-const buttonIncrease = document.querySelector("#increase");
-const box = document.querySelector("#box");
-box.style.backgroundColor = "#000";
+// const buttonDecrease = document.querySelector("#decrease");
+// const buttonIncrease = document.querySelector("#increase");
+// const box = document.querySelector("#box");
+// box.style.backgroundColor = "#000";
 
-buttonDecrease.addEventListener("click", () => {
-  box.style.width = `${box.offsetWidth - 10}px`;
-  box.style.height = `${box.offsetWidth - 10}px`;
-  
+// buttonDecrease.addEventListener("click", () => {
+//   box.style.width = `${box.offsetWidth - 10}px`;
+//   box.style.height = `${box.offsetWidth - 10}px`;
+
+// });
+
+// buttonIncrease.addEventListener("click", () => {
+//   box.style.width = `${box.offsetWidth + 10}px`;
+//   box.style.height = `${box.offsetWidth + 10}px`;
+
+// })
+
+// Задача 5
+// Навесьте слушатель по клику и определите, когда клик происходит
+// внутри элемента с id "place" и когда клик приходится вне зоны элемента
+
+{
+  /* <div>
+    <p class="taskTitle">ЗАДАЧА 5</p>
+    <div id="place"></div>
+</div> */
+}
+
+const divEl = document.querySelector("#place");
+divEl.style.width = "100px";
+divEl.style.height = "200px";
+divEl.style.backgroundColor = "green";
+
+window.addEventListener("click", (event) => {
+  if (event.target.getAttribute("id") === "place") {
+    console.log("ти попав");
+  } else {
+    console.log("ти не попав");
+  }
 });
-
-buttonIncrease.addEventListener("click", () => {
-  box.style.width = `${box.offsetWidth + 10}px`;
-  box.style.height = `${box.offsetWidth + 10}px`;
-  
-})
