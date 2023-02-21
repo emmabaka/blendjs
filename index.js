@@ -309,6 +309,19 @@
 Удали из списка те элементы, которые отмечены.
 */
 
+let checkBoxEls = document.querySelectorAll('[type=checkbox]');
+console.log(checkBoxEls);
+const submitButtonEl = document.querySelector('button[type=submit]');
+submitButtonEl.addEventListener('click', e => {
+  e.preventDefault();
+  for (const element of checkBoxEls) {
+    if (element.checked) {
+      element.parentNode.innerHTML = '';
+      checkBoxEls = document.querySelectorAll('[type=checkbox]');
+    }
+  }
+});
+
 /*
 Задача 10
 Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
