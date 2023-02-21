@@ -143,6 +143,21 @@
 //і повертає новий об'єкт без вказаних властивостей
 //Очікуваний результат ({ a: 1, b: 2, c: 3 }, 'b', 'c') => {a: 1}
 
+// function updateObject(object, ...args) {
+//   const newObject = {...object};
+//   for (const key of Object.keys(newObject)) {
+//     if (args.includes(key)) {
+//       delete newObject[key];
+//     }
+//   }
+//   return console.log(newObject);
+// }
+
+// updateObject({ a: 1, b: 2, c: 3 }, 'b', 'c');
+
+
+
+
 
 // / 7. Напишіть функцію changeObject, яка приймає як параметр об'єкт
 // та повертає масив, в якому кожен елемент це масив, який складається з двох елементів [key, value]
@@ -156,56 +171,118 @@
   //   merried: false,
   // }
 
+// function changeObject(obj) {
+//   const mass = [];
+  
+//   for (const [key, value] of Object.entries(obj)) {
+//     mass.push([key, value]);
+//   }
+//   return mass;
+// }
+
+// console.log(changeObject({ a: 1, b: 2, c: 3 }));
+
+
 // 8. Напиши скрипт керування особистим кабінетом інтернет банку.
 //Є об'єкт account, в якому необхідно реалізувати методи для роботи з балансом та історією трансакцій
 //Типів трансакцій усього два. Можна поповнити рахунок або списати з нього гроші.
 //
-// const TYPES_TRANSACTION = {
-//   DEPOSIT: 'deposit',
-//   WITHDRAW: 'withdraw',
-// }
+
+
+const TYPES_TRANSACTION = {
+  DEPOSIT: 'deposit',
+  WITHDRAW: 'withdraw',
+}
 //Кожна трансакція має мати властивості: id, type, amount.
 
-// {
-//     const account = {
-//       //поточний баланс рахунку
-//       balance: 0,
+
+const account = {
+  //поточний баланс рахунку
+  balance: 0,
   
-//       //Історія трансакцій
-//       transactions: [],
+  //Історія трансакцій
+  transactions: [],
   
-// //Метод приймає суму та тип трансакції і створює та додає у transactions об'єкт трансакції за зразком {id, type, amount}
-// createTransaction(type, amount) {
-//     return {
-//       id,
-//       type,
-//       amount,
-//     }
-//   },
+  uniqueId(length = 16) {
+    return parseInt(Math.ceil(Math.random() * Date.now()).toPrecision(length).toString().replace(".", ""))
+  },
+  //Метод приймає суму та тип трансакції і створює та додає у transactions об'єкт трансакції за зразком {id, type, amount}
+  createTransaction(type, amount) {
+    const transaction = {
+      id: this.uniqueId(),
+      type: type,
+      amount: amount,
+    }
+    this.transactions.push(transaction);
+  },
 
   //Метод відповідає за додавання суми до балансу.
   //Приймає суму трансакції.
   //Викликає createTransaction для створення об'єкта трансакції після чого додає його в історію трансакцій
-//   deposit(amount) {},
+  deposit(amount) {
+    this.balance += amount;
+    this.createTransaction(TYPES_TRANSACTION.DEPOSIT, amount);
+    return console.log(`You've sucsessfully deposit ${amount} to your account! Now your ballance is ${this.balance}$`);
+  },
 
   //Метод відповідає за списання коштів з балансу.
   //Приймає суму трансакції, викликає createTransaction для створення об'єкту трансакції
   //післе чого додає його в історію трансакцій
   //Якщо amount більше ніж поточний баланс, виводимо повідомлення про те, що недостатньо коштів на рахунку
-//   withdraw(amount) {},
+  withdraw(amount) {
+    if (amount > this.balance) {
+      console.error("Not enought ballance!");
+    } else {
+      this.balance -= amount;
+      this.createTransaction(TYPES_TRANSACTION.WITHDRAW, amount);
+      return console.log(`You've sucsessfully withdraw ${amount} to your account! Now your ballance is ${this.balance}$`);
+    }
+  },
 
   //Метод повертає поточний баланс
-//   getBalance() {},
+  getBalance() {
+    return this.balance;
+  },
 
 //   //Метод шукає та повертає об'єкт трансакції по id
-//   getTransactionDetails(id) {},
+  getTransactionDetails(id) {
+    console.log("You are looking for transaction #" + id);
+    for (const i of this.transactions) {
+      if (i.id === id) {
+        console.log(`We've found yor transaction #${id}. Here is it's details:`);
+        console.log(i);
+        return i;
+      }
+    }
+    return console.warn(`There is no transaction with ID: ${id}`);
+  },
 
 //   //Метод повертає загальну суму трансакції певного типу із всієї історії трансакцій
-//   getTotalSumByType(type) {},
-// }
-// }
+  getTotalSumByType(type) { 
+    let total = 0;
+    for (const i of this.transactions) {
+      if (i.type == type) {
+        total += i.amount;
+      }
+    }
+    return console.log(`Total amount of ${type}transactions is: ${total}`);
+  },
+
+}
 
 
 
-
-
+account.deposit(500);
+console.log(account.getBalance());
+console.log(account.transactions);
+account.withdraw(100);
+account.deposit(1000);
+account.withdraw(2000);
+account.withdraw(300);
+console.log(account.getBalance());
+console.log(account.transactions);
+const lastTransactionID = account.transactions[1].id;
+account.getTransactionDetails(lastTransactionID);
+account.getTransactionDetails(1231123124452354235);
+account.getTotalSumByType('deposit');
+account.getTotalSumByType('withdraw');
