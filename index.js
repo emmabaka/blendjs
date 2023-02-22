@@ -309,6 +309,7 @@
 Удали из списка те элементы, которые отмечены.
 */
 
+/* 
 let checkBoxEls = document.querySelectorAll('[type=checkbox]');
 console.log(checkBoxEls);
 const submitButtonEl = document.querySelector('button[type=submit]');
@@ -321,11 +322,51 @@ submitButtonEl.addEventListener('click', e => {
     }
   }
 });
+ */
 
 /*
 Задача 10
 Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
 */
+const contactsListEl = document.querySelector('.people');
+const sortByNameButton = document.querySelector('#sortByNameButton');
+const sortByLastNameButton = document.querySelector('#sortByLastNameButton');
+const contacts = [...document.querySelectorAll('.person')].map(contact =>
+  contact.textContent.split(' ')
+);
+
+const contactObj = [];
+contacts.map(contact => {
+  contactObj.push({ name: contact[0], lastName: contact[1] });
+});
+
+const sortedByName = [...contactObj].sort(function (a, b) {
+  if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+  if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+  return 0;
+});
+
+const sortedByLastName = [...contactObj].sort(function (a, b) {
+  if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1;
+  if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) return -1;
+  return 0;
+});
+
+function contactsMarkup(array) {
+  return array
+    .map(element => `<li class="person">${element.name} ${element.lastName}</li>`)
+    .join('');
+}
+
+sortByNameButton.addEventListener('click', e => {
+  e.preventDefault();
+  contactsListEl.innerHTML = contactsMarkup(sortedByName);
+});
+
+sortByLastNameButton.addEventListener('click', e => {
+  e.preventDefault();
+  contactsListEl.innerHTML = contactsMarkup(sortedByLastName);
+});
 
 /*
 Задача 11
