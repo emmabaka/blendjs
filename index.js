@@ -309,6 +309,24 @@
 Удали из списка те элементы, которые отмечены.
 */
 
+// const formRef = document.querySelector(".checkboxForm");
+// const filtrBtnRef = document.querySelector("button[type='submit']");
+// const checkBoxesListRef = [
+//   ...document.querySelectorAll(".checkboxWrapper input[type='checkbox']"),
+// ];
+
+// formRef.addEventListener("submit", onFormSubmit);
+
+// function onFormSubmit(e) {
+//   e.preventDefault();
+
+//   checkBoxesListRef.forEach((item) => {
+//     if (item.checked) {
+//       item.closest(".checkboxWrapper").remove();
+//     }
+//   });
+// }
+
 /*
 Задача 10
 Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
@@ -336,12 +354,12 @@
 //  Перероби функцію на проміс таким чином, щоб проміс повертав значення
 //  через 2 секунди після виклику функції
 
-function greet() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve('hello world'), 2000);
-  });
-}
+// function greet() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => resolve("hello world"), 2000);
+//   });
+// }
 
-greet()
-  .then(res => console.log(res))
-  .catch(reject => console.log(reject));
+// greet()
+//   .then((res) => console.log(res))
+//   .catch((reject) => console.log(reject));
