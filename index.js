@@ -363,3 +363,123 @@
 // greet()
 //   .then((res) => console.log(res))
 //   .catch((reject) => console.log(reject));
+
+/**
+ * ЗАДАЧА 8
+ * Створи перелік справ.
+ * Є  інпут, в який вноситься зміст задачі.
+ * При натисканні на кнопку "Додати" задача додається в список #list.
+ * Поруч з кожною задачею знаходится кнопка "Видалити", щоб можна було
+ * видалити цю задачу із списку.
+ * Список з задачами має бути доступним післе перезавантаження сторінки.
+ */
+
+const formRef = document.querySelector('#task-form');
+const listRefs = document.querySelector('#task-list');
+
+formRef.addEventListener('submit', onSubmit);
+
+function onSubmit (event) {
+  event.preventDefault();
+  let input = formRef.taskName.value;
+  const taskMarkup = `<li>${input} <button type="button">Видалити</button></li>`;
+  listRefs.insertAdjacentHTML("afterbegin", taskMarkup);
+  updateStorage(input);
+};
+
+function updateStorage (element) {
+  const dataFromLS = JSON.parse(localStorage.getItem('taskList')) || [];
+  localStorage.setItem("taskList", JSON.stringify([...dataFromLS, element]));
+};
+
+function getDataStorage ()
+
+/**
+ * ЗАДАЧА 2
+ * - Используй prompt и возвращай значение оттуда.
+ * - Создай функцию, внутри которой будет промис.
+ * Если значение не является числом, отклоняй промис и логируй "error".
+ * Если значение четное, решай промис и возвращай "even" через 1 секунду.
+ * Если значение не четное, решай промис и возвращай "odd" через 2 секунды.
+ */
+
+/**
+ * ЗАДАЧА 3
+ *
+ * Если имэйл и пароль пользователя совпадают, при сабмите сохраняй данные с формы
+ * в локальное хранилище и меняй кнопку login на logout и делай поля ввода
+ * недоступными для изменения.
+ * При перезагрузке страницы, если пользователь залогинен, мы должны видеть logout-кнопку
+ * и недоступные для изменения поля с данными пользователя.
+ * Клик по кнопке logout возвращает все в первоначальный вид и удаляет данные пользователя
+ * с локального хранилища.
+ *
+ * Если введенные данные не совпадают с нужными данными, вызывать аlert и
+ * уведомлять об ошибке.
+ */
+
+/**
+ * ЗАДАЧА 4
+ * Кнопка increment должна каждую секунду увеличивать значение на 1
+ * Кнопка decrement должна каждую секунду уменьшать значение на 1
+ */
+
+/**
+ * ЗАДАЧА 5
+ * Переделай код так, чтобы все данные собирались
+ * единовременно и приходили в виде массива
+ */
+// const getData = () =>
+//   new Promise((res) => {
+//     setTimeout(() => {
+//       const data = 1;
+//       console.log(data);
+//       res(data);
+//     }, 1000);
+//   });
+
+// const getNewData = () =>
+//   new Promise((res) => {
+//     setTimeout(() => {
+//       const data = 2;
+//       console.log(data);
+//       res(data);
+//     }, 1000);
+//   });
+
+// const getAnotherData = () =>
+//   new Promise((res) => {
+//     setTimeout(() => {
+//       const data = 3;
+//       console.log(data);
+//       res(data);
+//     }, 1000);
+//   });
+
+// const getLastData = () =>
+//   new Promise((res) => {
+//     setTimeout(() => {
+//       const data = 4;
+//       console.log(data);
+//       res(data);
+//     }, 1000);
+//   });
+
+// const arr = [];
+
+/**
+ * ЗАДАЧА 6
+ * Функция startTimer должна логать каждый элемент массива раз в секунду.
+ * Когда очередь дойдет до последнего элемента массива, продолжить логать в обратном порядке
+ * до тех пор пока не дойдет до первого элемента, затем остановить процесс.
+ *
+ */
+/**
+ * ЗАДАЧА 7
+ * Функция countWithDelay принимает принимает 3 аргумента:
+ * 1) количество секунд перед тем как сработает ф-ция logCount
+ * 2) сколько раз должна отработать logCount
+ * 3) задержка между вызовами ф-ции
+ *
+ * logCount должна логировать кол-во вызовов
+ */
