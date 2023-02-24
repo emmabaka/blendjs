@@ -328,50 +328,69 @@ submitButtonEl.addEventListener('click', e => {
 Задача 10
 Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
 */
-const contactsListEl = document.querySelector('.people');
-const sortByNameButton = document.querySelector('#sortByNameButton');
-const sortByLastNameButton = document.querySelector('#sortByLastNameButton');
-const contacts = [...document.querySelectorAll('.person')].map(contact =>
-  contact.textContent.split(' ')
-);
+// const contactsListEl = document.querySelector('.people');
+// const sortByNameButton = document.querySelector('#sortByNameButton');
+// const sortByLastNameButton = document.querySelector('#sortByLastNameButton');
+// const contacts = [...document.querySelectorAll('.person')].map(contact =>
+//   contact.textContent.split(' ')
+// );
 
-const contactObj = [];
-contacts.map(contact => {
-  contactObj.push({ name: contact[0], lastName: contact[1] });
-});
+// const contactObj = [];
+// contacts.map(contact => {
+//   contactObj.push({ name: contact[0], lastName: contact[1] });
+// });
 
-const sortedByName = [...contactObj].sort(function (a, b) {
-  if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-  if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-  return 0;
-});
+// const sortedByName = [...contactObj].sort(function (a, b) {
+//   if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+//   if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+//   return 0;
+// });
 
-const sortedByLastName = [...contactObj].sort(function (a, b) {
-  if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1;
-  if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) return -1;
-  return 0;
-});
+// const sortedByLastName = [...contactObj].sort(function (a, b) {
+//   if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1;
+//   if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) return -1;
+//   return 0;
+// });
 
-function contactsMarkup(array) {
-  return array
-    .map(element => `<li class="person">${element.name} ${element.lastName}</li>`)
-    .join('');
-}
+// function contactsMarkup(array) {
+//   return array
+//     .map(element => `<li class="person">${element.name} ${element.lastName}</li>`)
+//     .join('');
+// }
 
-sortByNameButton.addEventListener('click', e => {
-  e.preventDefault();
-  contactsListEl.innerHTML = contactsMarkup(sortedByName);
-});
+// sortByNameButton.addEventListener('click', e => {
+//   e.preventDefault();
+//   contactsListEl.innerHTML = contactsMarkup(sortedByName);
+// });
 
-sortByLastNameButton.addEventListener('click', e => {
-  e.preventDefault();
-  contactsListEl.innerHTML = contactsMarkup(sortedByLastName);
-});
+// sortByLastNameButton.addEventListener('click', e => {
+//   e.preventDefault();
+//   contactsListEl.innerHTML = contactsMarkup(sortedByLastName);
+// });
 
 /*
 Задача 11
 Дан список людей. Сделай фильтр по имени/фамилии.
 */
+
+// const filterInputEl = document.querySelector('.contactsFilter');
+// const contactsEl = document.querySelector('.contacts');
+// const contactEls = document.querySelectorAll('.contact');
+
+// filterInputEl.addEventListener('input', onFilterChange);
+
+// function onFilterChange(e) {
+//   const filter = e.target.value.toLowerCase();
+
+//   const filteredItems = [...contactEls].filter(elem =>
+//     elem.textContent.toLowerCase().includes(filter)
+//   );
+//   const contactsMarkup = filteredItems
+//     .map(elem => `<li class="contact">${elem.textContent}</li>`)
+//     .join('');
+
+//   contactsEl.innerHTML = contactsMarkup;
+// }
 
 /*
 Задача 12
@@ -380,8 +399,79 @@ sortByLastNameButton.addEventListener('click', e => {
 Если одно из полей пустое, вызывай alert с просьбой заполнить их.
 */
 
+/* 
+const textEl = document.querySelector('p.text');
+const fromEl = document.querySelector('#from');
+const toEl = document.querySelector('#to');
+const replaceButtonEl = document.querySelector('#replaceButton');
+
+const textContent = textEl.textContent;
+
+replaceButtonEl.addEventListener('click', onClick);
+
+function onClick() {
+  if (fromEl.value === '' || toEl.value === '') {
+    console.error('Fill up the fields, please!');
+  } else {
+    console.log(`Changing all "${fromEl.value}" >>> "${toEl.value}"`);
+    const newText = textContent.replaceAll(fromEl.value, toEl.value);
+    textEl.textContent = newText;
+  }
+}
+
+ */
+
 /*
 Задача 13
 Круг должен изчезать при наведении на него.
 При этом позиция соседних кругов должна оставаться прежней.
 */
+
+/* ******************************* */
+//fetch
+
+// const fetchUsersBtn = document.querySelector('.fetchBtn');
+// const userList = document.querySelector('.user-list');
+// const searchParams = new URLSearchParams({
+//   _limit: 5,
+//   _sort: 'name',
+// });
+
+// console.log(searchParams.toString()); // "_limit=5&_sort=name"
+
+// const url = `https://jsonplaceholder.typicode.com/users?${searchParams}`;
+// console.log(url); // "https://jsonplaceholder.typicode.com/users?_limit=5&_sort=name"
+
+// fetchUsersBtn.addEventListener('click', () => {
+//   fetchUsers()
+//     .then(users => renderUserList(users))
+//     .catch(error => console.log(error));
+// });
+
+// function fetchUsers() {
+//   return fetch(url, {
+//     headers: {
+//       Accept: 'application/json',
+//     },
+//   }).then(response => {
+//     if (!response.ok) {
+//       throw new Error(response.status);
+//     }
+//     return response.json();
+//   });
+// }
+
+// function renderUserList(users) {
+//   const markup = users
+//     .map(user => {
+//       return `<li>
+//           <p><b>Name</b>: ${user.name}</p>
+//           <p><b>Email</b>: ${user.email}</p>
+//           <p><b>Company</b>: ${user.company.name}</p>
+//         </li>`;
+//     })
+//     .join('');
+//   userList.innerHTML = markup;
+// }
+
+/* ******************************* */
