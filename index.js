@@ -309,6 +309,24 @@
 Удали из списка те элементы, которые отмечены.
 */
 
+// const formRef = document.querySelector(".checkboxForm");
+// const filtrBtnRef = document.querySelector("button[type='submit']");
+// const checkBoxesListRef = [
+//   ...document.querySelectorAll(".checkboxWrapper input[type='checkbox']"),
+// ];
+
+// formRef.addEventListener("submit", onFormSubmit);
+
+// function onFormSubmit(e) {
+//   e.preventDefault();
+
+//   checkBoxesListRef.forEach((item) => {
+//     if (item.checked) {
+//       item.closest(".checkboxWrapper").remove();
+//     }
+//   });
+// }
+
 /*
 Задача 10
 Дан список людей. Сделай возможность сортировки списка по имени и по фамилии.
