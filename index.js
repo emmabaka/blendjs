@@ -441,7 +441,7 @@ function onClick() {
 //   .then((res) => console.log(res))
 //   .catch((reject) => console.log(reject));
 
-// /*
+// /*******************************************************************************************/
 //  * ЗАДАЧА 8
 //  * Створи перелік справ.
 //  * Є  інпут, в який вноситься зміст задачі.
@@ -517,7 +517,7 @@ function absolutelyComplitelyDeleteFcknTaskFromFcknStorage() {
   const tasks = [...taskListElements].map(task => task.textContent);
   localStorage.setItem('taskList', JSON.stringify(tasks));
 }
-
+/***********************************************************************************************/
 //  * ЗАДАЧА 2
 //  * - Используй prompt и возвращай значение оттуда.
 //  * - Создай функцию, внутри которой будет промис.
