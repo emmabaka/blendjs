@@ -460,7 +460,7 @@ onLoad();
 function onLoad() {
   const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
   createElements(taskList);
-  createListener();
+  addHandlers();
 }
 
 function createElements(arr) {
@@ -497,7 +497,7 @@ function addNewEventListener() {
   });
 }
 
-function createListener() {
+function addHandlers() {
   const deleteButtonEl = document.querySelectorAll('.delete-button');
   if (!deleteButtonEl) {
     console.log('No such elements!');
