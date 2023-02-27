@@ -473,7 +473,7 @@ function createElements(arr) {
         </li>`
     )
     .join('');
-  listRefs.insertAdjacentHTML('beforebegin', markUp);
+  listRefs.insertAdjacentHTML('beforeend', markUp);
 }
 
 function onSubmit(event) {
@@ -481,12 +481,20 @@ function onSubmit(event) {
   const input = [formRef.taskName.value];
   createElements(input);
   updateStorage(...input);
-  //const newTask = document.querySelector.()
+  addNewEventListener();
 }
 
 function updateStorage(element) {
   const dataFromLS = JSON.parse(localStorage.getItem('taskList')) || [];
   localStorage.setItem('taskList', JSON.stringify([...dataFromLS, element]));
+}
+
+function addNewEventListener() {
+  const newTask = listRefs.lastElementChild;
+  newTask.addEventListener('click', () => {
+    newTask.remove();
+    absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
+  });
 }
 
 function createListener() {
