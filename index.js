@@ -455,13 +455,32 @@ const formRef = document.querySelector('#task-form');
 const listRefs = document.querySelector('#task-list');
 
 formRef.addEventListener('submit', onSubmit);
+onLoad();
+
+function onLoad() {
+  const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
+  createElements(taskList);
+  createListener();
+}
+
+function createElements(arr) {
+  const markUp = arr
+    .map(
+      task =>
+        `<li class="task-element">
+          <span class="task-text">${task}</span> 
+          <button class="delete-button" type="button">Видалити</button>
+        </li>`
+    )
+    .join('');
+  listRefs.insertAdjacentHTML('beforebegin', markUp);
+}
 
 function onSubmit(event) {
   event.preventDefault();
-  let input = formRef.taskName.value;
-  const taskMarkup = `<li>${input} <button type="button">Видалити</button></li>`;
-  listRefs.insertAdjacentHTML('afterbegin', taskMarkup);
-  updateStorage(input);
+  const input = [formRef.taskName.value];
+  createElements(input);
+  updateStorage(...input);
 }
 
 function updateStorage(element) {
@@ -469,7 +488,27 @@ function updateStorage(element) {
   localStorage.setItem('taskList', JSON.stringify([...dataFromLS, element]));
 }
 
-function getDataStorage() {}
+function createListener() {
+  const deleteButtonEl = document.querySelectorAll('.delete-button');
+  if (!deleteButtonEl) {
+    console.log('No such elements!');
+    return;
+  } else {
+    //console.log('Element found', deleteButtonEl);
+    deleteButtonEl.forEach(elem =>
+      elem.addEventListener('click', () => {
+        elem.parentNode.remove();
+        absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
+      })
+    );
+  }
+}
+
+function absolutelyComplitelyDeleteFcknTaskFromFcknStorage() {
+  const taskListElements = document.querySelectorAll('.task-text');
+  const tasks = [...taskListElements].map(task => task.textContent);
+  localStorage.setItem('taskList', JSON.stringify(tasks));
+}
 
 //  * ЗАДАЧА 2
 //  * - Используй prompt и возвращай значение оттуда.
