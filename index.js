@@ -481,6 +481,7 @@ function onSubmit(event) {
   const input = [formRef.taskName.value];
   createElements(input);
   updateStorage(...input);
+  //const newTask = document.querySelector.()
 }
 
 function updateStorage(element) {
@@ -494,7 +495,6 @@ function createListener() {
     console.log('No such elements!');
     return;
   } else {
-    //console.log('Element found', deleteButtonEl);
     deleteButtonEl.forEach(elem =>
       elem.addEventListener('click', () => {
         elem.parentNode.remove();
