@@ -457,10 +457,19 @@ const listRefs = document.querySelector('#task-list');
 formRef.addEventListener('submit', onSubmit);
 onLoad();
 
+listRefs.addEventListener('click', event => {
+  const deleteButtonEl = [...document.querySelectorAll('button.delete-button')];
+  if (!deleteButtonEl.includes(event.target)) {
+    return;
+  }
+  event.target.parentNode.remove();
+  absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
+});
+
 function onLoad() {
   const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
   createElements(taskList);
-  addHandlers();
+  //addHandlers();
 }
 
 function createElements(arr) {
@@ -481,7 +490,7 @@ function onSubmit(event) {
   const input = [formRef.taskName.value];
   createElements(input);
   updateStorage(...input);
-  addNewEventListener();
+  //addNewEventListener();
 }
 
 function updateStorage(element) {
@@ -489,34 +498,35 @@ function updateStorage(element) {
   localStorage.setItem('taskList', JSON.stringify([...dataFromLS, element]));
 }
 
-function addNewEventListener() {
-  const newTask = listRefs.lastElementChild;
-  newTask.addEventListener('click', () => {
-    newTask.remove();
-    absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
-  });
-}
-
-function addHandlers() {
-  const deleteButtonEl = document.querySelectorAll('.delete-button');
-  if (!deleteButtonEl) {
-    console.log('No such elements!');
-    return;
-  } else {
-    deleteButtonEl.forEach(elem =>
-      elem.addEventListener('click', () => {
-        elem.parentNode.remove();
-        absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
-      })
-    );
-  }
-}
-
 function absolutelyComplitelyDeleteFcknTaskFromFcknStorage() {
   const taskListElements = document.querySelectorAll('.task-text');
   const tasks = [...taskListElements].map(task => task.textContent);
   localStorage.setItem('taskList', JSON.stringify(tasks));
 }
+
+// function addNewEventListener() {
+//   const newTask = listRefs.lastElementChild;
+//   newTask.addEventListener('click', () => {
+//     newTask.remove();
+//     absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
+//   });
+// }
+
+// function addHandlers() {
+//   const deleteButtonEl = document.querySelectorAll('.delete-button');
+//   if (!deleteButtonEl) {
+//     console.log('No such elements!');
+//     return;
+//   } else {
+//     deleteButtonEl.forEach(elem =>
+//       elem.addEventListener('click', () => {
+//         elem.parentNode.remove();
+//         absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
+//       })
+//     );
+//   }
+// }
+
 /***********************************************************************************************/
 //  * ЗАДАЧА 2
 //  * - Используй prompt и возвращай значение оттуда.
