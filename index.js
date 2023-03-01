@@ -451,81 +451,81 @@ function onClick() {
 //  * Список з задачами має бути доступним післе перезавантаження сторінки.
 //  */
 
-const formRef = document.querySelector('#task-form');
-const listRefs = document.querySelector('#task-list');
+// const formRef = document.querySelector('#task-form');
+// const listRefs = document.querySelector('#task-list');
 
-formRef.addEventListener('submit', onSubmit);
-onLoad();
+// formRef.addEventListener('submit', onSubmit);
+// onLoad();
 
-listRefs.addEventListener('click', event => {
-  const deleteButtonEl = [...document.querySelectorAll('button.delete-button')];
-  if (!deleteButtonEl.includes(event.target)) {
-    return;
-  }
-  event.target.parentNode.remove();
-  absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
-});
-
-function onLoad() {
-  const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
-  createElements(taskList);
-  //addHandlers();
-}
-
-function createElements(arr) {
-  const markUp = arr
-    .map(
-      task =>
-        `<li class="task-element">
-          <span class="task-text">${task}</span> 
-          <button class="delete-button" type="button">Видалити</button>
-        </li>`
-    )
-    .join('');
-  listRefs.insertAdjacentHTML('beforeend', markUp);
-}
-
-function onSubmit(event) {
-  event.preventDefault();
-  const input = [formRef.taskName.value];
-  createElements(input);
-  updateStorage(...input);
-  //addNewEventListener();
-}
-
-function updateStorage(element) {
-  const dataFromLS = JSON.parse(localStorage.getItem('taskList')) || [];
-  localStorage.setItem('taskList', JSON.stringify([...dataFromLS, element]));
-}
-
-function absolutelyComplitelyDeleteFcknTaskFromFcknStorage() {
-  const taskListElements = document.querySelectorAll('.task-text');
-  const tasks = [...taskListElements].map(task => task.textContent);
-  localStorage.setItem('taskList', JSON.stringify(tasks));
-}
-
-// function addNewEventListener() {
-//   const newTask = listRefs.lastElementChild;
-//   newTask.addEventListener('click', () => {
-//     newTask.remove();
-//     absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
-//   });
-// }
-
-// function addHandlers() {
-//   const deleteButtonEl = document.querySelectorAll('.delete-button');
-//   if (!deleteButtonEl) {
-//     console.log('No such elements!');
+// listRefs.addEventListener('click', event => {
+//   const deleteButtonEl = [...document.querySelectorAll('button.delete-button')];
+//   if (!deleteButtonEl.includes(event.target)) {
 //     return;
-//   } else {
-//     deleteButtonEl.forEach(elem =>
-//       elem.addEventListener('click', () => {
-//         elem.parentNode.remove();
-//         absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
-//       })
-//     );
 //   }
+//   event.target.parentNode.remove();
+//   absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
+// });
+
+// function onLoad() {
+//   const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
+//   createElements(taskList);
+//   //addHandlers();
 // }
+
+// function createElements(arr) {
+//   const markUp = arr
+//     .map(
+//       task =>
+//         `<li class="task-element">
+//           <span class="task-text">${task}</span>
+//           <button class="delete-button" type="button">Видалити</button>
+//         </li>`
+//     )
+//     .join('');
+//   listRefs.insertAdjacentHTML('beforeend', markUp);
+// }
+
+// function onSubmit(event) {
+//   event.preventDefault();
+//   const input = [formRef.taskName.value];
+//   createElements(input);
+//   updateStorage(...input);
+//   //addNewEventListener();
+// }
+
+// function updateStorage(element) {
+//   const dataFromLS = JSON.parse(localStorage.getItem('taskList')) || [];
+//   localStorage.setItem('taskList', JSON.stringify([...dataFromLS, element]));
+// }
+
+// function absolutelyComplitelyDeleteFcknTaskFromFcknStorage() {
+//   const taskListElements = document.querySelectorAll('.task-text');
+//   const tasks = [...taskListElements].map(task => task.textContent);
+//   localStorage.setItem('taskList', JSON.stringify(tasks));
+// }
+
+// // function addNewEventListener() {
+// //   const newTask = listRefs.lastElementChild;
+// //   newTask.addEventListener('click', () => {
+// //     newTask.remove();
+// //     absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
+// //   });
+// // }
+
+// // function addHandlers() {
+// //   const deleteButtonEl = document.querySelectorAll('.delete-button');
+// //   if (!deleteButtonEl) {
+// //     console.log('No such elements!');
+// //     return;
+// //   } else {
+// //     deleteButtonEl.forEach(elem =>
+// //       elem.addEventListener('click', () => {
+// //         elem.parentNode.remove();
+// //         absolutelyComplitelyDeleteFcknTaskFromFcknStorage();
+// //       })
+// //     );
+// //   }
+// // }
 
 /***********************************************************************************************/
 //  * ЗАДАЧА 2
@@ -534,6 +534,24 @@ function absolutelyComplitelyDeleteFcknTaskFromFcknStorage() {
 //  * Если значение не является числом, отклоняй промис и логируй "error".
 //  * Если значение четное, решай промис и возвращай "even" через 1 секунду.
 //  * Если значение не четное, решай промис и возвращай "odd" через 2 секунды.
+
+function checker() {
+  const promptedVelue = prompt('Give me a number, please!');
+  const promise = new Promise((resolve, reject) => {
+    if (isNaN(parseFloat(promptedVelue))) {
+      reject('Not a number!!!');
+    } else if (promptedVelue % 2 === 0) {
+      setTimeout(() => resolve('even'), 1000);
+    } else if (promptedVelue % 2 !== 0) {
+      setTimeout(() => resolve('odd'), 2000);
+    }
+  });
+  return promise;
+}
+
+checker()
+  .then(res => console.log(res))
+  .catch(reject => console.log(reject));
 
 //  * ЗАДАЧА 3
 //  *
