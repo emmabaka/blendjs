@@ -535,23 +535,23 @@ function onClick() {
 //  * Если значение четное, решай промис и возвращай "even" через 1 секунду.
 //  * Если значение не четное, решай промис и возвращай "odd" через 2 секунды.
 
-function checker() {
-  const promptedVelue = prompt('Give me a number, please!');
-  const promise = new Promise((resolve, reject) => {
-    if (isNaN(parseFloat(promptedVelue))) {
-      reject('Not a number!!!');
-    } else if (promptedVelue % 2 === 0) {
-      setTimeout(() => resolve('even'), 1000);
-    } else if (promptedVelue % 2 !== 0) {
-      setTimeout(() => resolve('odd'), 2000);
-    }
-  });
-  return promise;
-}
+// function checker() {
+//   const promptedVelue = prompt('Give me a number, please!');
+//   const promise = new Promise((resolve, reject) => {
+//     if (isNaN(parseFloat(promptedVelue))) {
+//       reject('Not a number!!!');
+//     } else if (promptedVelue % 2 === 0) {
+//       setTimeout(() => resolve('even'), 1000);
+//     } else if (promptedVelue % 2 !== 0) {
+//       setTimeout(() => resolve('odd'), 2000);
+//     }
+//   });
+//   return promise;
+// }
 
-checker()
-  .then(res => console.log(res))
-  .catch(reject => console.log(reject));
+// checker()
+//   .then(res => console.log(res))
+//   .catch(reject => console.log(reject));
 
 //  * ЗАДАЧА 3
 //  *
@@ -624,3 +624,18 @@ checker()
 //  * 3) задержка между вызовами ф-ции
 //  *
 //  * logCount должна логировать кол-во вызовов
+
+// function countWithDelay(msToStart, count, delay) {
+//   setTimeout(() => {
+//     let counter = 1;
+//     const logCount = setInterval(() => {
+//       if (counter === count) {
+//         clearInterval(logCount);
+//       }
+//       console.log(counter);
+//       counter += 1;
+//     }, delay);
+//   }, msToStart);
+// }
+
+// countWithDelay(2000, 10, 100);
