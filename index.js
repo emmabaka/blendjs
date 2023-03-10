@@ -566,6 +566,94 @@ function onClick() {
 //  * Если введенные данные не совпадают с нужными данными, вызывать аlert и
 //  * уведомлять об ошибке.
 
+const loginFormEl = document.querySelector('#login-form');
+const signupFormEl = document.querySelector('#signup-form');
+const submitButtonEl = document.querySelector('button[type=submit]');
+
+signupFormEl.addEventListener('submit', onSignup);
+loginFormEl.addEventListener('submit', logInOut);
+
+onLoad();
+
+function onLoad() {
+  const users = [...getUsers()];
+  for (const person of users) {
+    if (person.login === true) {
+      loginFormEl.email.value = `${person.email}`;
+      loginFormEl.email.setAttribute('disabled', true);
+      loginFormEl.password.value = `${person.password}`;
+      loginFormEl.password.setAttribute('disabled', true);
+      loginFormEl.button.textContent = `Logout >>> ${person.email}`;
+      console.log(person.email, ' is logged in.');
+    }
+  }
+}
+
+function getUsers() {
+  const users = JSON.parse(localStorage.getItem('users')) || [];
+  return users;
+}
+
+function onSignup(e) {
+  e.preventDefault();
+  const user = {
+    email: signupFormEl.email.value,
+    password: signupFormEl.password.value,
+    login: false,
+  };
+  const savedUsers = [...getUsers()];
+  if (savedUsers.length > 0) {
+    for (const person of savedUsers) {
+      if (person.email === user.email) {
+        console.log('Such user already exists!');
+        return;
+      }
+    }
+  }
+  localStorage.setItem('users', JSON.stringify([...savedUsers, user]));
+  console.log('Congratulations! You have been sucsessfully registered!');
+  return;
+}
+
+function logInOut(e) {
+  e.preventDefault();
+  const email = loginFormEl.email.value;
+  const pass = loginFormEl.password.value;
+  const users = [...getUsers()];
+
+  if (loginFormEl.button.textContent.includes('Logout')) {
+    for (const person of users) {
+      if (person.email === loginFormEl.email.value) {
+        person.login = false;
+      }
+    }
+    loginFormEl.email.removeAttribute('disabled');
+    loginFormEl.email.value = '';
+    loginFormEl.password.removeAttribute('disabled');
+    loginFormEl.password.value = '';
+    loginFormEl.button.textContent = 'Login';
+    localStorage.setItem('users', JSON.stringify([...users]));
+    console.log('You  have been sucsessfully loged out.');
+    return;
+  }
+
+  for (const person of users) {
+    if (person.email === email && person.password === pass) {
+      person.login = true;
+      console.log('You  have been sucsessfully loged in.');
+      loginFormEl.email.setAttribute('disabled', true);
+      loginFormEl.password.setAttribute('disabled', true);
+      loginFormEl.button.textContent = `Logout >>> ${person.email}`;
+      localStorage.setItem('users', JSON.stringify([...users]));
+      // console.log(getUsers());
+      return;
+    }
+  }
+  console.log('Incorrect email or password. Please, try again.');
+}
+
+/* ************************************************************************************ */
+
 //  * ЗАДАЧА 4
 //  * Кнопка increment должна каждую секунду увеличивать значение на 1
 //  * Кнопка decrement должна каждую секунду уменьшать значение на 1
